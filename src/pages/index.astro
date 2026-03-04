@@ -1,16 +1,29 @@
 ---
 import TarjetaMusica from '../components/TarjetaMusica.astro';
 import Layout from '../layouts/Layout.astro';
+import axios from 'axios';
+const ListaM = [
 
-const cancion = {
-	titulo: "Cancion 1",
-	artista: "Artista 1",
-	album: "Album 1",
-	img: "/practica1.jpg",
-	duracion: "3:45"
-}
+	"Cancion",
+	"cancion sad",
+	"cancion triste",
+	"cancion feliz",
+	"cancion de amor",
+	"cancion de desamor",
+	"cancion de fiesta",
+	"cancion de verano"
+	]
+const ListaS = await axios.get("https://api.institutoalfa.org/api/songs")
 ---
 
 <Layout>
-		
+	<div>
+		{ ListaS.data.songs.map(function (valor: any) {
+			return (
+				<TarjetaMusica titulo={valor.title} album={valor.album.title} artista={valor.author.author} duracion={valor.duration} img={valor.album.image.url}/>
+					
+				
+			);
+		})}
+	</div>
 </Layout>

@@ -1,0 +1,35 @@
+---
+import { Icon } from "astro-icon/components";
+
+const titulo = Astro.props.titulo;
+const artista = Astro.props.artista;
+const album = Astro.props.album;
+const img = Astro.props.img;
+const duracion = Astro.props.duracion;
+
+interface Props {
+    titulo: string;
+    artista: string;
+    album: string;
+    img: string;
+    duracion: string;
+}
+---
+
+<section class="flex flex-row">
+    <div class="px-5 py-10 bg-gray-400">
+        <img
+            src={img}
+            alt=""
+            width="100px"
+            height="100px"
+            class="object-cover"
+        />
+    </div>
+    <div class="p-5">
+        <h3 class="font-semibold">{titulo}</h3>
+        <p class="opacity-50">{artista}</p>
+        <p class="size-3">{album}</p>
+        <p>{duracion}</p>
+    </div>
+</section>
